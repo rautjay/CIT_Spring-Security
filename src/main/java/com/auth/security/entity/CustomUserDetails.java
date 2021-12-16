@@ -21,7 +21,7 @@ private User user;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-	 List<User_Role> userroles =  user.getUserroles();
+	 Set<User_Role> userroles =  user.getUserroles();
 	 
      Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 

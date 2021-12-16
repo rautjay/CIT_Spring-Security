@@ -1,6 +1,7 @@
 package com.auth.security.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,14 +9,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-
 public class User_Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int User_RoleId;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
 	
 	@ManyToOne

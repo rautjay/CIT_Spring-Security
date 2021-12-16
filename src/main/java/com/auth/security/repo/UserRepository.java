@@ -8,6 +8,6 @@ import com.auth.security.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	Optional<User> findByUsername(String username );
+	public User findByUsername(String username );
 
 }

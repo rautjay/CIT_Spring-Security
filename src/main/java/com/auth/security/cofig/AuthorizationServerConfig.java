@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
@@ -37,13 +37,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		.inMemory()
         .withClient("clientapp").
          secret(bCryptPasswordEncoder.encode("123456"))
-        .authorizedGrantTypes("password", "authorization_code", "refresh_token")
+        .authorizedGrantTypes("client_credentials", "refresh_token")
         .authorities("READ_ONLY_CLIENT")
         .scopes("user_info")
         .resourceIds("oauth2-resource")
         
         .redirectUris("http://localhost:8081/login")
-        .accessTokenValiditySeconds(3600)
+        .accessTokenValiditySeconds(8000)
         .refreshTokenValiditySeconds(240000);
 		
 	}
@@ -53,7 +53,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		// TODO Auto-generated method stub
 	
 		endpoints.authenticationManager(authenticationManager)
-		.userDetailsService(userDetailsService);
+	      .userDetailsService(userDetailsService);
 	}
 	
 	
